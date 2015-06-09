@@ -1,0 +1,47 @@
+
+<div class="form-wrapper">
+  <form action="/spirits/<%= @spirit.id %>" method="post">
+
+    <fieldset>
+      <legend>Update Spirit</legend>
+    <p>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="spirit[name]" value="<%= @spirit.name %>">
+    </p>
+    <p>
+    <label for="variety">Type:</label>
+    <input type="text" id="variety" name="spirit[variety]" value="<%= @spirit.variety %>">
+    </p>
+    <p>
+    <label for="origin">Origin:</label>
+    <input type="text" id="origin" name="spirit[origin]" value="<%= @spirit.origin %>">
+    </p>
+    <p>
+    <label for="price">Price ($):</label>
+    <input type="text" id="price" name="spirit[price]" value="<%= @spirit.price %>">
+    </p>
+    <p>
+    <label for="volume">Volume:</label>
+    <input type="text" id="volume" name="spirit[volume]" value="<%= @spirit.volume %>">
+    </p>
+    <p>
+    <label for="alcohol">Alcohol:</label>
+    <input type="text" id="alcohol" name="spirit[alcohol]" value="<%= @spirit.alcohol %>">
+    </p>
+    <p>
+    <label for="image">Image:</label>
+    <input type="url" id="image" name="spirit[image]" value="<%= @spirit.image %>">
+    </p>
+    <p>
+    <label for="description">Description:</label>
+    <textarea id="description" name="spirit[description]" cols="40" rows="6">
+      <%= @spirit.description %>
+    </textarea>
+    </p>
+
+    <button>Update Spirit</button>
+
+    </fieldset>
+
+  </form>
+</div>

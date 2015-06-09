@@ -1,0 +1,156 @@
+
+input {
+  --display: block;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: rgba(74,79,85,1);
+  min-height: 100vh;
+}
+
+header {
+  background-color: linen;
+  height: 2em;
+  width: 100vw;
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+  font-size: 4em
+
+}
+
+section.main {  
+  background: -moz-linear-gradient(top,rgba(0,0,0,0.3) 0,rgba(0,0,0,0) 7px);
+  background: -webkit-linear-gradient(top,rgba(0,0,0,0.3) 0,rgba(0,0,0,0) 7px);
+  background: -ms-linear-gradient(top,rgba(0,0,0,0.3) 0,rgba(0,0,0,0) 7px);
+  background: linear-gradient(top,rgba(0,0,0,0.3) 0,rgba(0,0,0,0) 7px);
+  background-repeat: no-repeat;
+  background-size: 100% 7px;
+  background-color: linen;
+  min-height: 80vh;
+  display: flex;
+}
+
+footer {
+  height: 50px;
+  width: 100vw;
+}
+
+nav {
+  background-color: rgba(74,79,85,1);
+  text-align: center;
+}
+
+nav ul { padding: 0; }
+
+nav ul li {
+  display: inline-block;
+  box-sizing: initial;
+  padding: 5px 20px;
+}
+
+nav a { color: rgba(255,255,255,1); }
+
+
+.container {
+  max-width: 960px;
+  margin: 20px auto;
+  flex: 1;
+  background-color: rgba(255,255,255,1);
+  box-shadow: 0 0 8px rgba(0,0,0,0.7);
+}
+
+.container h2 {
+  text-align: center;
+}
+
+.spirit-list li {
+  display: inline-block;
+  padding: 5px;
+  width: 200px;
+  height: 280px;
+}
+
+.spirit-wrapper {
+  border: 1px solid rgba(200,200,200,1);
+  text-align: center;
+  padding: 15px;
+}
+
+.spirit-list a {
+  text-decoration: none;
+  color: rgba(0,0,0,1);
+}
+ 
+.spirit-wrapper img { height: 200px; }
+
+
+
+.item-wrapper {
+  text-align: center;
+  padding: 15px;
+}
+.show-item {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 400px;
+  min-width: 200px;
+}
+
+.show-item img {
+  max-width: 200px;
+  max-height: 300px;
+}
+
+.show-item form {
+  display: inline-block;
+}
+
+p.highlight {
+  font-size: 1.6em;
+  color: rgba(175,62,40,1);
+}
+
+table.item-data {
+  margin: 0 auto;
+}
+
+td.label {
+  max-width: 150px;
+  padding: 5px;
+  text-align: right;
+}
+
+td.value {
+  max-width: 400px;
+  padding: 5px;
+  text-align: left;
+}
+
+div.description {
+  margin-top: 10px;
+  padding: 10px;
+  border-top: 1px solid rgba(200,200,200,1);
+  border-bottom: 1px solid rgba(200,200,200,1);
+}
+
+.controls {
+  margin-top: 10px;
+}
+
+
+fieldset {
+  width: 500px;
+  margin: 20px auto;
+  text-align: right;
+  padding-right: 5%;
+}
+fieldset input {
+  width: 300px;
+}
+
+legend { font-size: 1.3em; }
+
+
+

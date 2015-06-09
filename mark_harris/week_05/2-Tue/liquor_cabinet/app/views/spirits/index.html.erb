@@ -1,0 +1,23 @@
+<h2>All Spirits</h2>
+
+
+
+<ul class="spirit-list">
+<% @spirits.each do |spirit| 
+
+    if spirit.image == nil;
+      spirit.image = "assets/liquor-thumb.gif"
+    end
+%>
+
+<li>
+  <a href="spirits/<%= spirit.id %>" >
+    <div class="spirit-wrapper">
+      <img src="<%= spirit.image %>"><br>
+      <%= spirit.name %>
+    </div>
+  </a>
+</li>
+
+<% end %>
+</ul>

@@ -1,0 +1,53 @@
+<!-- <h2>Show Spirit</h2> -->
+
+
+
+<% 
+  if @spirit.image == nil;
+    @spirit.image = "/assets/liquor-thumb.gif"
+  end
+%>
+
+<div class="item-wrapper">
+
+  <p class="highlight"><%= @spirit.name %></p>
+  <div class="show-item">
+    <img src=<%= @spirit.image %> >
+  </div>
+
+  <div class="show-item">
+  <table class="item-data">
+    <tr>
+      <td class="label">Liquor:</td>
+      <td class="value"><%= @spirit.variety %></td>
+    </tr>
+    <tr>
+      <td class="label">Origin:</td>
+      <td class="value"><%= @spirit.origin %></td>
+    </tr>
+    <tr>
+      <td class="label">Price:</td>
+      <td class="value">$<%= number_with_precision(@spirit.price, :precision => 2) %></td>
+    </tr>
+    <tr>
+      <td class="label">Volume:</td>
+      <td class="value"><%= @spirit.volume %></td>
+    </tr>
+    <tr>
+      <td class="label">Alcohol:</td>
+      <td class="value"><%= @spirit.alcohol %>%</td>
+    </tr>
+  </table>
+    
+  <% unless @spirit.description == nil %>
+    <div class="description"><%= @spirit.description %></div>
+  <% end %>
+    <div class="controls">
+      <%= link_to "Edit", spirit_edit_path(@spirit.id) %>
+      <%= button_to "Delete", spirit_delete_path(@spirit.id) %>
+    </div>
+  </div>
+</div>
+
+
+

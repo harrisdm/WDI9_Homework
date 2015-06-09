@@ -16,7 +16,7 @@ require "pry"
 require 'rainbow'
 
 # Define the subway network
-mta = { :"N Line" => ["Times Square", "34th", "28th", "23rd", "Union Square", "8th"],
+MTA = { :"N Line" => ["Times Square", "34th", "28th", "23rd", "Union Square", "8th"],
         :"L Line" => ["8th", "6th", "Union Square", "3rd", "1st"],
         :"6 Line" => ["Grand Central", "33rd", "28th", "23rd", "Union Square", "Astor" ]
   };
@@ -29,25 +29,25 @@ def prompt(msg)
 end
 
 # Find the indexes of the stations needed
-def find_stations(mta, start_station, end_station)
+def find_stations(start_station, end_station)
 
   # Find the lines the stations are on
-  lines = find_lines mta, start_station, end_station
+  lines = find_lines start_station, end_station
 
   # Find the indexes on the found lines
-  origin_index = mta[lines[0]].index(start_station)
-  origin_union_index = mta[lines[0]].index("Union Square")
-  dest_union_index = mta[lines[1]].index("Union Square")
-  dest_index = mta[lines[1]].index(end_station)
+  origin_index = MTA[lines[0]].index(start_station)
+  origin_union_index = MTA[lines[0]].index("Union Square")
+  dest_union_index = MTA[lines[1]].index("Union Square")
+  dest_index = MTA[lines[1]].index(end_station)
 
   # Return an array of the results
   stations = [lines[0], origin_index, origin_union_index, lines[1], dest_union_index, dest_index]
 end
 
 # Find the lines the stations are on
-def find_lines mta, start_station, end_station
+def find_lines start_station, end_station
   lines = [[],[]]
-  mta.each do |line, stations|
+  MTA.each do |line, stations|
     lines[0].push line if stations.include?(start_station)
     lines[1].push line if stations.include?(end_station)
   end
@@ -61,15 +61,15 @@ def find_lines mta, start_station, end_station
 end
 
 # Create the list of stations including the connection if needed
-def build_trip(mta, stations)
+def build_trip(stations)
   if ( stations[0] == stations[3] )
     # Build the trip
-    trip = build_leg(mta[stations[0]], stations[1], stations[5])
+    trip = build_leg(MTA[stations[0]], stations[1], stations[5])
   else
     # Build the trip with the change at Union Square
-    trip = build_leg(mta[stations[0]], stations[1], stations[2])
+    trip = build_leg(MTA[stations[0]], stations[1], stations[2])
     trip[-1] = Rainbow("Union Square").cyan + ": change to the " + Rainbow("#{stations[3]}").cyan
-    trip.push *build_leg(mta[stations[3]], stations[4], stations[5])
+    trip.push *build_leg(MTA[stations[3]], stations[4], stations[5])
   end
 
   return trip
@@ -80,17 +80,18 @@ def build_leg(line, start, stop)
   trip = []
   until start == stop do
     start += (start < stop) ? 1 : - 1
-    trip.push line[start]
+    trip << line[start]           # << inserts at end of array
   end
   return trip
 end
 
 # Display the trip and number of stations
 def display_trip(trip, start_line)
+  trip[-1] = Rainbow(trip[-1]).red + ": destination reached"
+  
   puts "\nTrip: " + Rainbow("#{trip[0]}").green + " ==> " + Rainbow("#{trip[-1]}").red
   puts Rainbow("********************************").yellow
   puts Rainbow("#{trip.shift}").green + ": take the " + Rainbow("#{start_line}").green
-  trip[-1] = Rainbow(trip[-1]).red + ": destination reached"
   puts trip
   puts Rainbow("********************************").yellow
   puts Rainbow(" Total Stations: #{trip.length} ").black.bg(:white)
@@ -99,18 +100,18 @@ end
 
 
 # Plan the requested trip
-def plan_trip (mta, start_station, end_station)
+def plan_trip (start_station, end_station)
 
   # Check if the user is already at the destination
   if(start_station == end_station)
     puts "You are already at your destination\n\n"
   else
     # Find the station indexes
-    stations = find_stations mta, start_station, end_station
+    stations = find_stations start_station, end_station
 
     # Build the trip
     trip = [start_station]
-    trip.push *build_trip(mta, stations)
+    trip.push *build_trip(stations)
 
     #Display the trip
     display_trip trip, stations[0]
@@ -123,7 +124,7 @@ start_station = prompt "What is the starting station?"
 end_station = prompt "What is the destination station?"
 
 # Plan the trip
-plan_trip mta, start_station, end_station
+plan_trip start_station, end_station
 
 
 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiquorCabinet</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%# javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<header>
+  <p>The Liquor Cabinet</p>
+</header>
+<nav>
+  <ul>
+    <a href="/"><li>Home</li></a>
+    <a href="/spirits/new"><li>New Spirit</li></a>
+  </ul>
+</nav>
+
+<section class="main">
+  <div class="container">
+    <%= yield %>
+  </div>
+</section>
+
+<footer></footer>
+
+</body>
+</html>

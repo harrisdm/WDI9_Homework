@@ -12,6 +12,10 @@ ActiveRecord::Base.establish_connection(
 # Logs out the AR generated SQL in the terminal
 ActiveRecord::Base.logger = Logger.new(STDERR) 
 
+after do
+  ActiveRecord::Base.connection.close
+end
+
 class Movie < ActiveRecord::Base
 end
 
