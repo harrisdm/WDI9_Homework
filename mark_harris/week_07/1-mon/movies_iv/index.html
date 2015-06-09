@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movies IV</title>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/movies.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/movies.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <a href="/"><div class="movies-logo"></div></a>
+    <header>
+    
+      <a href="/"><div class="logo"></div></a>
+      <div class="search">
+        <form action="http://omdbapi.com" >
+          <input type="text" name="t" id="search" size="40" placeholder="Search for a film" autofocus>
+          <input type="submit" value="search">
+        </form>
+      </div>
+
+    </header>
+
+  
+    <section class="content-wrapper" id="content-wrapper">
+
+
+      <div id="film-data">
+        <div class="poster" id="poster"></div>
+
+        <div class="content"> 
+          <div class="film-info">
+            <div class="film-title" id="title"></div>
+            
+            <div class="details">
+              <ul>
+                <li id="rated"></li>
+                <li id="runtime"></li>
+                <li id="genre"></li>
+                <li id="released"></li>
+              </ul>
+            </div>
+
+            <div class="plot" id="plot"></div>
+            <p id="director"></p>
+            <p id="stars"></p>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </section>
+
+    <footer></footer>
+
+  </div>
+
+  
+
+</body>
+
+</html>
