@@ -7,45 +7,54 @@ var weatherReport = function(parsed_json) {
 
   var current = parsed_json['current_observation'];
 
-  var location = parsed_json['location']['city'];
-
-
   var temp_c = current['temp_c'];
   var feels_temp_c = current['feelslike_c'];
   var weather = current['weather'];
   var weather_icon = current['icon_url'];
-  var obsv_time = current['observation_time'];
-  var precip_1hr = current['precip_1hr_metric'];
-  var precip_today = current['precip_today_metric'];
-  var humidity = current['relative_humidity'];
+
+  var wind = current['wind_string'];
   var wind_dir = current['wind_dir'];
   var wind_speed = current['wind_kph'];
   var wind_gust = current['wind_gust_kph'];
-  var wind = current['wind_string'];
 
-  //alert("Current temperature in " + location + " is: " + temp_c);
+  var humidity = current['relative_humidity'];
+  var precip_1hr = current['precip_1hr_metric'];
+  var precip_today = current['precip_today_metric'];
 
-  var div = $("<div/>").html(temp_c).appendTo("#weather");
-  var div = $("<div/>").html(feels_temp_c).appendTo("#weather");
-  var div = $("<div/>").html(weather).appendTo("#weather");
-  var div = $("<div/>").html(weather_icon).appendTo("#weather");
-  var div = $("<div/>").html(obsv_time).appendTo("#weather");
-  var div = $("<div/>").html(precip_1hr).appendTo("#weather");
-  var div = $("<div/>").html(precip_today).appendTo("#weather");
-  var div = $("<div/>").html(humidity).appendTo("#weather");
-  var div = $("<div/>").html(wind_dir).appendTo("#weather");
-  var div = $("<div/>").html(wind_speed).appendTo("#weather");
-  var div = $("<div/>").html(wind_gust).appendTo("#weather");
-  var div = $("<div/>").html(wind).appendTo("#weather");
+  var obsv_time = current['observation_time'];
+  var obsv_loc = current['observation_location']['full'];
+
+  $("#city").html(toTitleCase($("#location").val()));
+  $("#weather-image").html("<img src="+weather_icon+">");
+  $("#weather").html(weather);
+  $("#temperature").html(temp_c+ "&deg;C");
+  $("#feels-like").html("Feels like " + feels_temp_c + "&deg;C");
+
+  $("#wind_dir").html(wind_dir);
+  $("#wind_speed").html(wind_speed + " km/h");
+  $("#wind_gust").html(wind_gust + " km/h");
+
+  $("#humidity").html(humidity);
+  $("#precip_1hr").html(precip_1hr + " ml");
+  $("#precip_today").html(precip_today + " ml");
+
+  $("#obsv_time").html(obsv_time);
+  $("#obsv_loc").html(obsv_loc);
+
 
 };
 
-
+function toTitleCase(str)
+{
+  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
 
 
 
 
 $(document).ready(function() {
+
+  //$(".weather-container").hide();
 
   $("#search").on("click", function(event) {
     event.preventDefault();
@@ -63,7 +72,9 @@ $(document).ready(function() {
       $.ajax({
         url : url,
         dataType : "jsonp"
-      }).done(weatherReport);
+      }).done(weatherReport).done(function(){
+        $(".weather-container").slideDown();
+      });
 
     });
 

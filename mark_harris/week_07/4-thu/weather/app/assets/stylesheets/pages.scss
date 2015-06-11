@@ -1,3 +1,73 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body {
+  background: url("/assets/pp_bg_9.jpg");
+  background-size: cover;
+  font-family: "arial";
+}
+
+.container { max-width: 800px; }
+
+.search { text-align: center; }
+
+.search h1 {
+  font-size: 4em;
+  color: #ffffff;
+}
+
+.search input {
+  font-size: 1.2em;
+  padding: 3px;
+  margin-right: 5px;
+}
+
+.weather-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: rgba(255,255,255,0.9);
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 10px;
+  border-right: 1px solid #ccc;
+  display: none;
+}
+
+.left-data {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 15px;
+  margin-top: 5%;
+  border-right: 1px solid #ccc;
+}
+
+#city {
+  font-size: 2em;
+  padding: 5px;
+}
+
+.img-container img { width: 86px; }
+
+#temperature {
+  height: 85px;
+  line-height: 75px;
+  color: #F4B701;
+  text-align: center;
+  font-size: 3.75em;
+}
+
+.right-data {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.small-table {
+  max-width: 300px;
+  margin: auto;
+}

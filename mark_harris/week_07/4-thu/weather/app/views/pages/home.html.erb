@@ -1,10 +1,73 @@
-<h1>Weather</h1>
+
+<div class="container">
+
+  <div class="search">
+    <h1>Weathr</h1>
+    <form>
+      <%= text_field_tag "location", nil, :autofocus => true %>
+      <%= button_tag "Search", :id => "search", :class => "btn btn-success" %>
+    </form>
+  </div>
+  
 
 
-<form>
-  <%= text_field_tag "location", nil, :autofocus => true %>
-  <%= button_tag "Search", :id => "search" %>
-</form>
+  <div class="weather-container">
+  <div class="row">
+
+    <!-- LEFT -->
+    <div class="col-md-6">
+      <div class="row col-xs-12">
+        <div id="city"></div>
+      </div>
+      <div class="row text-center">
+        <div class="col-sm-6 left-data">
+          <div id="weather-image" class="img-container row"></div>
+          <div id="weather" class="row"></div>
+        </div>
+        <div class="col-sm-6 left-data">
+          <div id="temperature"></div>
+          <div id="feels-like"></div>
+        </div>
+      </div>
+    </div>
 
 
-<div id="weather"></div>
+    <!-- RIGHT -->
+    <div class="col-md-6 right-data">
+
+    <table class="table small-table">
+      <tr>
+        <th>Wind Direction:</th>
+        <td id="wind_dir"></td>
+      </tr>
+      <tr>
+        <th>Wind Speed:</th>
+        <td id="wind_speed"></td>
+      </tr>
+      <tr>
+        <th>Gusts:</th>
+        <td id="wind_gust"></td>
+      </tr>
+      <tr>
+        <th>Humidity:</th>
+        <td id="humidity"></td>
+      </tr>
+      <tr>
+        <th>Percipitation (1 Hour):</th>
+        <td id="precip_1hr"></td>
+      </tr>
+      <tr>
+        <th>Percipitation (Today):</th>
+        <td id="precip_today"></td>
+      </tr>
+    </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div id="obsv_time" class="text-left"></div>
+      <div id="obsv_loc" class="text-left"></div>
+    </div>
+  </div>
+</div>
+</div>
