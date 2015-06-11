@@ -41,8 +41,6 @@ $(document).ready(function() {
 
         display_film(info);
 
-        
-
       }
     }
 
